@@ -1,22 +1,20 @@
-use pseudolocalize::{Pseudolocalizer, PseudolocalizerBuilder};
+use pseudolocalize::Pseudolocalizer;
 
 fn main() {
-    let sz = PseudolocalizerBuilder::new()
-        .with_prefix("ëë ")
-        .build()
-        .transform("Spongebob | La città delle bolle | Nickelodeon Italia");
+    let sz = Pseudolocalizer::new()
+        .with_prefix("<< ")
+        .with_suffix(" »")
+        .transform("Voyez le brick géant que j'examine près du wharf.");
     
-    //let pll: Pseudolocalizer = PseudolocalizerBuilder::new().build();
-    //let szs = pll.transform("pq ça marche pas???");
+    let pll: Pseudolocalizer = Pseudolocalizer::new().with_prefix("lol");
+    let szs = pll.transform("pq ça marche pas???");
     
-    //gp.transform("wiii");
-    let mut plb = PseudolocalizerBuilder::new();
+    let plb = Pseudolocalizer::new();
     let pl = plb
         .with_prefix("<<< ")
-        .with_suffix(" »»»")
-        .build();
+        .with_suffix(" »»»");
         
     let s = pl.transform("The quick brown fox jumps over the lazy dog");
     let z = pl.transform("Je me baladais sur l'avenue, la...");
-    println!("{}\n{}\n{}", sz, s, z);
+    println!("{}\n{}\n{}\n{}", szs, sz, s, z);
 }
