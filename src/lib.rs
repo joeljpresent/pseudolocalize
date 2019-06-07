@@ -23,5 +23,5 @@
 
 mod pseudolocalizer;
 mod transform;
-pub use pseudolocalizer::Pseudolocalizer;
+pub use pseudolocalizer::{Pseudolocalizer, PseudolocalizerBuilder};
 pub use transform::{diacriticize, transform_str};
