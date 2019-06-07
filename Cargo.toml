@@ -1,0 +1,15 @@
+[package]
+name = "pseudolocalize"
+version = "0.1.0"
+authors = ["Joël J. Présent <36854931+joeljpresent@users.noreply.github.com>"]
+edition = "2018"
+
+[lib]
+name = "pseudolocalize"
+path = "src/lib.rs"
+
+[[bin]]
+name = "plm"
+path = "src/bin.rs"
+
+[dependencies]
