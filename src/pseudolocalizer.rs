@@ -1,31 +1,39 @@
-use crate::transform::transform_str;
-
+/// A struct which can pseudolocalize strings with
+/// some configuration.
 pub struct Pseudolocalizer<'a> {
-    str_start: &'a str,
-    str_end: &'a str
+    prefix: &'a str,
+    suffix: &'a str,
+    transform_str: fn(s: &str) -> String
 }
 
 impl<'a> Pseudolocalizer<'a> {
+
+    /// Create a default pseudolocalizer.
     pub fn new() -> Self {
         Pseudolocalizer {
-            str_start: "[!!! ",
-            str_end: " !!!]"
+            prefix: "[!!! ",
+            suffix: " !!!]",
+            transform_str: crate::transform::transform_str
         }
     }
 
+    /// Transform a string into a pseudolocalized string
+    /// according to the pseudolocalizer's configuration.
     pub fn transform(&self, string: &str) -> String {
         format!("{}{}{}",
-            self.str_start,
-            transform_str(string),
-            self.str_end)
+            self.prefix,
+            (self.transform_str)(string),
+            self.suffix)
     }
 
-    fn str_start(&self) -> &str {
-        &self.str_start
+    /// Get the string slice with which pseudolocalized strings shall start.
+    pub fn prefix(&self) -> &str {
+        &self.prefix
     }
 
-    fn str_end(&self) -> &str {
-        &self.str_end
+    /// Get the string slice with which pseudolocalized strings shall end.
+    pub fn suffix(&self) -> &str {
+        &self.suffix
     }
 }
 
