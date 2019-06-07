@@ -1,9 +1,7 @@
-use pseudolocalize::pseudolocalizer::Pseudolocalizer;
-use std::env::args;
+use pseudolocalize::Pseudolocalizer;
 
 fn main() {
-    for arg in args() {
-        let pl = Pseudolocalizer::new();
-        println!("{}", pl.transform(arg.as_str()));
-    }
+    let pl = Pseudolocalizer::new();
+    let s = pl.transform("The quick brown fox jumps over the lazy dog");
+    assert_eq!(s, "[!!! Ŧℏë ʠûíçķ ƃŕøẅñ ƒøẍ ĵûɱƥŝ øṽëŕ țℏë łάẓƴ ďøǧ !!!]");
 }
