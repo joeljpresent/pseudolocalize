@@ -6,7 +6,7 @@ Pseudolocalization is a software testing method used for testing
 internationalization aspects of software
 (cf. [Wikipedia](https://en.wikipedia.org/wiki/Pseudolocalization)).
 
-For now, this crate lets you transform a string to replace its ASCII 
+For now, this crate lets you transform a string to replace its ASCII
 letters by similar letter-like characters, usually letters with
 diacritics.
 
