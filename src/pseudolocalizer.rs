@@ -58,6 +58,7 @@ impl<'a> Pseudolocalizer<'a> {
         &self.suffix
     }
 
+    /// Get the function used for pseudolocalizing strings.
     pub fn transform_function(&self) -> &(fn(s: &str) -> String) {
         &self.transform_str
     }
