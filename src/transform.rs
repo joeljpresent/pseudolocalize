@@ -1,3 +1,6 @@
+/// Take a character `c` as input and return:
+/// - a similar letter (usually with diacritics) if `c` is an ASCII letter;
+/// - the input character `c` if it is not an ASCII letter.
 fn diacriticize(c: char) -> char {
     match c {
         'A' => 'Ą',
@@ -56,6 +59,8 @@ fn diacriticize(c: char) -> char {
     }
 }
 
+/// Transform a string by replacing all of its ASCII letters
+/// by similar letters, usually by adding diacritics.
 pub fn transform_str(s: &str) -> String {
     let mut modified = String::new();
     for c in s.chars() {

@@ -1,8 +1,9 @@
-use pseudolocalize::transform::transform_str;
+use pseudolocalize::pseudolocalizer::Pseudolocalizer;
 use std::env::args;
 
 fn main() {
     for arg in args() {
-        println!("{}", transform_str(arg.as_str()));
+        let pl = Pseudolocalizer::new();
+        println!("{}", pl.transform(arg.as_str()));
     }
 }
