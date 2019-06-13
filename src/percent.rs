@@ -3,27 +3,21 @@ pub(crate) fn crop_string(base_length: usize, extension: &str, percentage: u32) 
     let mut extended_string = String::new();
     let mut i = increased_length;
     while i > 0 {
-        let copied = extended_string.strncpy(extension, i);
+        let copied = strncpy(&mut extended_string, extension, i);
         i -= copied;
     }
     extended_string
 }
 
-trait CStringFunctions {
-    fn strncpy(&mut self, src: &str, n: usize) -> usize;
-}
-
-impl CStringFunctions for String {
-    /// Copy `n` characters for `src` and append them to this string.
-    /// Return the number of actual copied characters.
-    fn strncpy(&mut self, src: &str, n: usize) -> usize {
-        let mut copied = 0;
-        for i in src.chars().take(n) {
-            self.push(i);
-            copied += 1;
-        }
-        copied
+/// Copy `n` characters for `src` and append them to `dst`.
+/// Return the number of actual copied characters.
+fn strncpy(dst: &mut String, src: &str, n: usize) -> usize {
+    let mut copied = 0;
+    for i in src.chars().take(n) {
+        dst.push(i);
+        copied += 1;
     }
+    copied
 }
 
 #[cfg(test)]
